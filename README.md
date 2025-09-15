@@ -2,3 +2,5 @@ This is a program which uses HTML's built in Geolocation tool to obtain the user
 at the user's location.
 
 API Documentation: https://www.weatherapi.com/docs/
+
+Dependencies: Express, Dotenv
