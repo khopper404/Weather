@@ -6,15 +6,64 @@
         content="width=device-width,initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Huebert</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div>
-            <h1 class="brainrot">weather</h1>
+
+    <div class="container">
+        <h1 class="title" id="location">Weather Forecast</h1>
+
+        <div class="forecast hidden">
+            <!-- Today -->
+            <div class="day-card" data-expanded="false">
+                <img class="icon" 
+                     alt="Sunny"
+                     id="day0img">
+
+                <h2 class="day">Today</h2>
+                <p class="temp" id="day0temp"></p>
+
+                <div class="more-info">
+                    <p id="day0h">Humidity: 45%</p>
+                    <p id="day0w">Wind: 7 mph</p>
+                    <p id="day0UV">UV Index: 5</p>
+                </div>
+            </div>
+
+            <!-- Tomorrow -->
+            <div class="day-card" data-expanded="false">
+                <img class="icon" 
+                     alt="Cloudy"
+                     id="day1img">
+
+                <h2 class="day">Tomorrow</h2>
+                <p class="temp" id="day1temp"></p>
+
+                <div class="more-info">
+                    <p id="day1h">Humidity: 45%</p>
+                    <p id="day1w">Wind: 7 mph</p>
+                    <p id="day1UV">UV Index: 5</p>
+                </div>
+            </div>
+
+            <!-- Day After -->
+            <div class="day-card" data-expanded="false">
+                <img class="icon" 
+                     alt="Rain"
+                     id="day2img">
+
+                <h2 class="day">Day After</h2>
+                <p class="temp" id="day2temp"></p>
+
+                <div class="more-info">
+                    <p id="day2h">Humidity: 45%</p>
+                    <p id="day2w">Wind: 7 mph</p>
+                    <p id="day2UV">UV Index: 5</p>
+                </div>
+            </div>
         </div>
-        <div>
-            <p id="location">Weather at your current location: </p>
-            <p class="weather" id="degrees"></p>
-        </div>
-    </body>
-    <script src="index.js"></script>
+    </div>
+
+<script src="index.js"></script>
+</body>
 </html>

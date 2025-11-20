@@ -4,14 +4,16 @@ const express = require('express');
 
 const server = express();
 
+const maxFreeDays = 3; //free api subscription only allows for 3 days of forecast :(
+
 server.use(express.static('public'));
 server.use(express.json());
 
 server.get('/info/:dynamic', (req, res) => {
-    const { lat, long} = req.query;
+    const {lat, long} = req.query;
     console.log(lat);
     console.log(long);
-    apiCall(lat, long)
+        apiCallForecast(lat, long)
         .then(result => {
             console.log("Result:", result);
             res.status(200).json
@@ -20,6 +22,7 @@ server.get('/info/:dynamic', (req, res) => {
         .catch(error => {
             console.error("Error:", error);
         });
+    
 });
 
 
@@ -31,7 +34,7 @@ server.listen(port, function(error) {
     }
 })
 
-async function apiCall(lat, long){
+async function apiCallCurrent(lat, long){
     const data = await fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${lat},${long}`, {
         method: `GET`
     });
@@ -41,4 +44,13 @@ async function apiCall(lat, long){
     return(info);
 }
 
+async function apiCallForecast(lat, long){
+    const data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${lat},${long}&days=${maxFreeDays}`, {
+        method: `GET`
+    });
+    console.log(data);
+    const info = await data.json();
+    console.log(info);
+    return(info);
+}
 
